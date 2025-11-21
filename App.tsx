@@ -1,116 +1,77 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+// App.tsx
+import React, {useState} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
   View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import MapScreen from './src/screens/MapScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+type Tab = 'map' | 'profile';
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const App = () => {
+  const [selectedTab, setSelectedTab] = useState<Tab>('map');
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        {selectedTab === 'map' ? <MapScreen /> : <ProfileScreen />}
+      </View>
+
+      <View style={styles.tabBar}>
+        <TouchableOpacity
+          style={styles.tabItem}
+          onPress={() => setSelectedTab('map')}>
+          <Text
+            style={[
+              styles.tabLabel,
+              selectedTab === 'map' && styles.tabLabelActive,
+            ]}>
+            🗺 Harita
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.tabItem}
+          onPress={() => setSelectedTab('profile')}>
+          <Text
+            style={[
+              styles.tabLabel,
+              selectedTab === 'profile' && styles.tabLabelActive,
+            ]}>
+            👤 Profil
+          </Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {flex: 1, backgroundColor: '#fff'},
+  content: {flex: 1},
+  tabBar: {
+    height: 60,
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: '#ddd',
+    backgroundColor: '#fafafa',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  tabLabel: {
+    fontSize: 14,
+    color: '#777',
   },
-  highlight: {
+  tabLabelActive: {
+    color: '#000',
     fontWeight: '700',
   },
 });
