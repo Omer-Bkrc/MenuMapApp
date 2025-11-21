@@ -1,79 +1,142 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# CafeMapApp
 
-# Getting Started
+☕ **CafeMapApp**\
+React Native ile geliştirilmiş, kafe & restoran menülerine harita
+üzerinden erişim sağlayan mobil uygulama.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Bu proje şu anda MVP aşamasındadır: - Kullanıcı harita üzerinde
+mekanları görebilir - Marker'a tıklayınca menü + yorum kartı açılır -
+Profil sekmesi vardır - Alt bar *custom* olarak yazılmıştır - Kod yapısı
+tamamen temiz ve stabil kuruludur
 
-## Step 1: Start the Metro Server
+------------------------------------------------------------------------
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 🚀 Proje Teknolojileri & Sürüm Bilgileri
 
-To start Metro, run the following command from the _root_ of your React Native project:
+  Teknoloji / Araç    Sürüm
+  ------------------- ---------------
+  React Native        0.75.5
+  react-native-maps   1.20.1
+  Java JDK            17
+  Node.js             20.19.5
+  npm                 10.8.2
+  Android SDK         34+
+  CocoaPods           Kullanılmıyor
 
-```bash
-# using npm
-npm start
+------------------------------------------------------------------------
 
-# OR using Yarn
-yarn start
+## 📦 Projeyi Yeni Bilgisayarda Kurma
+
+### 1. Repo'yu klonla
+
+``` bash
+git clone https://github.com/<username>/CafeMapApp.git
+cd CafeMapApp
 ```
 
-## Step 2: Start your Application
+### 2. Bağımlılıkları yükle
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+``` bash
+npm install
 ```
 
-### For iOS
+### 3. Android build temizliği
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+``` bash
+cd android
+./gradlew clean
+cd ..
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### 4. Android'de çalıştır
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+``` bash
+npx react-native run-android
+```
 
-## Step 3: Modifying your App
+------------------------------------------------------------------------
 
-Now that you have successfully run the app, let's modify it.
+## 🗺️ Uygulama Özellikleri
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+-   ✔ Harita Görünümü (MapScreen)\
+-   ✔ Marker + Menü + Yorum kartı\
+-   ✔ Profil sekmesi\
+-   ✔ Custom alt tab bar\
+-   ✔ Navigation kütüphanesi yok (tam stabil)
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+------------------------------------------------------------------------
 
-## Congratulations! :tada:
+## 🔧 Proje Yapısı
 
-You've successfully run and modified your React Native App. :partying_face:
+    CafeMapApp/
+    ├── App.tsx
+    ├── src/
+    │   └── screens/
+    │       ├── MapScreen.tsx
+    │       └── ProfileScreen.tsx
+    ├── android/
+    ├── ios/
+    └── package.json
 
-### Now what?
+------------------------------------------------------------------------
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+## 🔑 Google Maps API Key
 
-# Troubleshooting
+`android/app/src/main/AndroidManifest.xml` içinde meta-data olarak
+bulunur.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+------------------------------------------------------------------------
 
-# Learn More
+## 🎯 MVP Durumu
 
-To learn more about React Native, take a look at the following resources:
+-   ✔ Harita çalışıyor\
+-   ✔ Marker açılır kart\
+-   ✔ Profil ekranı\
+-   ✔ Custom tab bar\
+-   ✔ Stabil yapı\
+-   ✔ GitHub'a yüklendi
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+------------------------------------------------------------------------
+
+## 🛠️ Roadmap -- Yakında Eklenecek
+
+1.  WebView ile menü linki açma\
+2.  Firebase Auth\
+3.  Firestore veri yapısı\
+4.  Dinamik marker yükleme\
+5.  Admin paneli
+
+------------------------------------------------------------------------
+
+## 🧹 Kod Standartları
+
+-   Navigation yok → custom tab bar\
+-   Tam JS/TS tabanlı yapı\
+-   Android optimize\
+-   iOS sonradan eklenebilir
+
+------------------------------------------------------------------------
+
+## ⚠️ Önemli Not
+
+Bu proje **npm** ile kurulmuştur.\
+Yeni bilgisayarda mutlaka:
+
+``` bash
+npm install
+```
+
+kullanılmalıdır.
+
+------------------------------------------------------------------------
+
+## ✔ Lisans
+
+Proje **Ömer Bakırcı** tarafından geliştirilmiştir.
+
+------------------------------------------------------------------------
+
+## 🎉 Son
+
+Bu README ile proje kurulumu ve geliştirme süreci tamamen kayıt
+altındadır.
